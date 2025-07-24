@@ -11,7 +11,14 @@ enum designation{
 typedef struct faculty{
     char *name;
     int *id;
-    char *designation;
+    char designation;
 } faculty;
+
+void add_faculty();
+void remove_faculty();
+void assign_course();
+void remove_couser();
+void add_preadvising();
+void remove_preadvising();
 
 #endif
