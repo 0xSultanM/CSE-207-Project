@@ -21,4 +21,6 @@ void remove_couser();
 void add_preadvising();
 void remove_preadvising();
 
+void nothing();
+
 #endif
