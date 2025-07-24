@@ -14,6 +14,7 @@ typedef struct faculty{
     char designation;
 } faculty;
 
+<<<<<<< HEAD
 void add_faculty();
 void remove_faculty();
 void assign_course();
@@ -23,4 +24,6 @@ void remove_preadvising();
 
 void nothing();
 
+=======
+>>>>>>> 8fab97234588dbd0700f28c136df789a3f525e89
 #endif
