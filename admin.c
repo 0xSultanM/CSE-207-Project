@@ -14,7 +14,10 @@ void addExamSchedule(){
     printf("\t\tType the Date ( Format: 10:00 AM ): ");
     scanf("%s",&exam.time);
 };
-void editExamSchedule();
+void editExamSchedule(){
+    printf("Write the course code: ");
+    scanf("%s",&exam.courseCode);
+};
 void viewExamSchedule();
 void deleteExamSchedule();
 int isPublishedES();
