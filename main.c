@@ -2,6 +2,6 @@
 #include"admin.h"
 
 int main(){
-    
-    
+    printf("\t\t\t\tWelcome Back to Admin Portal\n\n");
+    examAndGrade();
 }

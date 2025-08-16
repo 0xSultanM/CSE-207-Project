@@ -6,8 +6,10 @@
 
 //  ~~~~ Exam and Grades ~~~~
 
+void examAndGrade();
+
 // Exam schedule
-typedef struct examSchedule {
+struct examSchedule {
     char courseCode[12];
     char date[12];
     char time[10];
@@ -17,7 +19,7 @@ void addExamSchedule();
 void editExamSchedule();
 void viewExamSchedule();
 void deleteExamSchedule();
-int isPublishedES();
+void isPublishedES();
 
 // Grade Details
 struct gradeDetails{
@@ -30,6 +32,6 @@ struct gradeDetails{
 void viewGrade();
 void editGrade();
 void publishGrade();
-int isPublishGrade();
+void isPublishGrade();
 
 #endif
