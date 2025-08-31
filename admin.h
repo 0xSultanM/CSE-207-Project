@@ -9,11 +9,13 @@
 void examAndGrade();
 
 // Exam schedule
-struct examSchedule {
+typedef struct examSchedule {
     char courseCode[12];
     char date[12];
     char time[10];
-};
+}exam;
+
+void examSchedule();
 
 void addExamSchedule();
 void editExamSchedule();
@@ -22,12 +24,13 @@ void deleteExamSchedule();
 void isPublishedES();
 
 // Grade Details
-struct gradeDetails{
+typedef struct gradeDetails{
     char studentID[16];
     char courseCode[12];
     char grade[4];
-};
+}grade;
 
+void gradeReport();
 
 void viewGrade();
 void editGrade();

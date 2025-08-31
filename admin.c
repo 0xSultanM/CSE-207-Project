@@ -1,123 +1,112 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdint.h>
 #include <stdlib.h>
 #include"admin.h"
 
 // declaring the structure for exam schedule
-struct examSchedule exam;
+exam examS;
 
 //Menu Otpions for exam schedule
 void examAndGrade(){
-    int n,i,j;
+    uint16_t n;
     printf("\t\tAvailable Options:\n\n");
     printf("\t\t\t1. Exam Schedule\n");
     printf("\t\t\t2. Grade Report\n");
-    printf("\t\t\t3. Exit\n\n");
+    printf("\t\t\t0. Exit\n\n");
     printf("\t\tSelect your proferable option: ");
     scanf("%d",&n);
 
     if(n==1){
         system("clear");
-        printf("\t\tOptions for Exam Schedule:\n\n");
-        printf("\t\t\t1. Add a new Exam Schedule\n");
-        printf("\t\t\t2. Edit existing Exam Schedule\n");
-        printf("\t\t\t3. View Any Exam Schedule\n");
-        printf("\t\t\t4. Delete Any Exam Schedule\n");
-        printf("\t\t\t5. Exam Schedule Status\n");
-        printf("\t\t\t0. Exit\n");
-        printf("\t\tNow select your preferable option: ");
-        scanf("%d",&i);
-
-        switch (i)
-        {
-            case 1:
-                addExamSchedule();
-                break;
-            case 2:
-                editExamSchedule();
-                break;
-            case 3:
-                viewExamSchedule();
-                break;
-            case 4:
-                deleteExamSchedule();
-                break;
-            case 5:
-                isPublishedES();
-                break;;
-            case 0:
-                system("clear");
-                examAndGrade();
-                break;
-        }
+        examSchedule();
     } else if(n==2){
         system("clear");
-        printf("\t\tOptions Grade Report:\n\n");
-        printf("\t\t\t1. View Grade Report\n");
-        printf("\t\t\t2. Edit Grade Report\n");
-        printf("\t\t\t3. Pubish Grade Report\n");
-        printf("\t\t\t4. Grade Report Status\n");
-        printf("\t\t\t0. Exit\n");
-        printf("\t\tNow select your preferable option: ");
-        scanf("%d",&j);
-
-        switch (j)
-        {
-            case 1:
-                viewGrade();
-                break;
-            case 2:
-                editGrade();
-                break;
-            case 3:
-                publishGrade();
-                break;
-            case 4:
-                isPublishGrade();
-                break;
-            case 0:
-                system("clear");
-                examAndGrade();
-                break;
-        }
-
-    } else if(n==3) {
+        gradeReport();
+    } else if(n==0) {
         system("clear");
-        printf("Logged Out Successfully!");
+        printf("\n\n\t\t\tLogged Out Successfully!\n\n");
         exit(EXIT_SUCCESS);
     } else {
         system("clear");
-        printf("\t\tInvalid Input. Kindly select again!\n\n");
+        printf("\n\n\t\tInvalid Input. Kindly select again!\n\n");
         examAndGrade();
     }
 
 }
 
+// Functions for Exam Schedule
+
+// User input for exam schedule
+void examSchedule(){
+    uint16_t i;
+    printf("\t\tOptions for Exam Schedule:\n\n");
+    printf("\t\t\t1. Add a new Exam Schedule\n");
+    printf("\t\t\t2. Edit existing Exam Schedule\n");
+    printf("\t\t\t3. View Any Exam Schedule\n");
+    printf("\t\t\t4. Delete Any Exam Schedule\n");
+    printf("\t\t\t5. Exam Schedule Status\n");
+    printf("\t\t\t6. Exit\n\n");
+    printf("\t\tNow select your preferable option: ");
+    scanf("%d",&i);
+
+    switch (i){
+        case 1:
+            addExamSchedule();
+            examAndGrade();
+            break;
+        case 2:
+            editExamSchedule();
+            examAndGrade();
+            break;
+        case 3:
+            viewExamSchedule();
+            examAndGrade();
+            break;
+        case 4:
+            deleteExamSchedule();
+            examAndGrade();
+            break;
+        case 5:
+            isPublishedES();
+            examAndGrade();
+            break;;
+        case 6:
+            system("clear");
+            examAndGrade();
+            break;
+    }
+}
 // Add new exam schedule
 void addExamSchedule(){
     system("clear");
-    printf("\t\tWrite the course code: ");
-    scanf("%s",exam.courseCode);
+    printf("\t\t\nSchedule the upcoming exams");
+    printf("\n\n\t\tWrite the course code to add: ");
+    scanf("%s",examS.courseCode);
     printf("\t\tType the Date ( Format: DD/MM/YEAR ): ");
-    scanf("%s",exam.date);
+    scanf("%s",examS.date);
     printf("\t\tType the Time ( Format: 10:00 AM ): ");
-    scanf("%s",exam.time);
+    scanf("%s",examS.time);
+    system("clear");
+    printf("\n\n\t\tExam for %s has been scheduled successfully!!\n\n",examS.courseCode);
 }
 
 // Edit or Modify the Exam Schedule
 void editExamSchedule(){
     system("clear");
+    printf("\n\t\tEdit or Modify the scheduled exams");
     char c[12];
-    printf("Write the course code: ");
+    printf("\n\n\t\t\tWrite the course code to edit: ");
     scanf("%s",c);
     
-    if(strcmp(c, exam.courseCode) == 0){
-        printf("\t\tType the New Date ( Format: DD/MM/YEAR ): ");
-        scanf("%s",exam.date);
+    if(strcmp(c, examS.courseCode) == 0){
+        printf("\n\n\t\tType the New Date ( Format: DD/MM/YEAR ): ");
+        scanf("%s",examS.date);
         printf("\t\tType the New Time ( Format: 10:00 AM ): ");
-        scanf("%s",exam.time);
+        scanf("%s",examS.time);
+        printf("\n\n\t\tExam time has been edited for %s sucessfully\n\n",examS.courseCode);
     } else {
-        printf("There isn't any scheduled exam for %s course",exam.courseCode);
+        printf("\n\n\t\tThere isn't any scheduled exam for %s course\n\n",examS.courseCode);
     }
 }
 
@@ -140,6 +129,41 @@ void isPublishedES(){
 struct gradeDetails grades;
 
 // functions for grade
+// User input for grade
+void gradeReport(){
+    uint16_t j;
+    printf("\t\tOptions Grade Report:\n\n");
+    printf("\t\t\t1. View Grade Report\n");
+    printf("\t\t\t2. Edit Grade Report\n");
+    printf("\t\t\t3. Pubish Grade Report\n");
+    printf("\t\t\t4. Grade Report Status\n");
+    printf("\t\t\t5. Exit\n\n");
+    printf("\t\tNow select your preferable option: ");
+    scanf("%d",&j);
+
+    switch (j){
+        case 1:
+            viewGrade();
+            examAndGrade();
+            break;
+        case 2:
+            editGrade();
+            examAndGrade();
+            break;
+        case 3:
+            publishGrade();
+            examAndGrade();
+            break;
+        case 4:
+            isPublishGrade();
+            examAndGrade();
+            break;
+        case 0:
+            system("clear");
+            examAndGrade();
+            break;
+    }
+}
 
 // View Grade of any course
 void viewGrade(){
