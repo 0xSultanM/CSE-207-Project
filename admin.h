@@ -4,6 +4,12 @@
 //write all the functions in here
 
 
+
+/* Following code is developed by
+    Name: Sultan Mahmud
+    ID: 2024-3-60-294
+*/
+
 //  ~~~~ Exam and Grades ~~~~
 
 void examAndGrade();

@@ -15,7 +15,7 @@ void examAndGrade(){
     printf("\t\t\t2. Grade Report\n");
     printf("\t\t\t0. Exit\n\n");
     printf("\t\tSelect your proferable option: ");
-    scanf("%d",&n);
+    scanf("%hd",&n);
 
     if(n==1){
         system("clear");
@@ -48,7 +48,7 @@ void examSchedule(){
     printf("\t\t\t5. Exam Schedule Status\n");
     printf("\t\t\t6. Exit\n\n");
     printf("\t\tNow select your preferable option: ");
-    scanf("%d",&i);
+    scanf("%hd",&i);
 
     switch (i){
         case 1:
@@ -139,7 +139,7 @@ void gradeReport(){
     printf("\t\t\t4. Grade Report Status\n");
     printf("\t\t\t5. Exit\n\n");
     printf("\t\tNow select your preferable option: ");
-    scanf("%d",&j);
+    scanf("%hd",&j);
 
     switch (j){
         case 1:
