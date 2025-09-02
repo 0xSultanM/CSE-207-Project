@@ -499,10 +499,12 @@ void studentMenu(Student_std* currentStudent) {
 
         switch (choice) {
             case 1:
+                system("clear");
                 viewProfile(currentStudent);
                 break;
 
             case 2:
+                system("clear");
                 printf("\t\tEnter new address (or press Enter to skip): ");
                 consume_stdin_line();
                 fgets(newAddress, ADDRESS_SIZE, stdin);
@@ -524,6 +526,7 @@ void studentMenu(Student_std* currentStudent) {
                 break;
 
             case 3:
+                system("clear");
                 printf("\t\tEnter course code to enroll: ");
                 scanf("%5s", courseCode);
                 if (!enrollCourse(currentStudent, courseCode)) {
@@ -532,6 +535,7 @@ void studentMenu(Student_std* currentStudent) {
                 break;
 
             case 4:
+                system("clear");
                 printf("\t\tEnter course code to drop: ");
                 scanf("%5s", courseCode);
                 if (!dropCourse(currentStudent, courseCode)) {
@@ -540,29 +544,35 @@ void studentMenu(Student_std* currentStudent) {
                 break;
 
             case 5:
+                system("clear");
                 viewAcademicPerformance(currentStudent);
                 break;
 
             case 6:
+                system("clear");
                 viewExamSchedules(currentStudent);
                 break;
 
             case 7:
+                system("clear");
                 viewCoursesAndTimeTable(currentStudent);
                 break;
 
             case 8:
+                system("clear");
                 printf("\t\tEnter filename for transcript (e.g., transcript.txt): ");
                 scanf("%63s", filename);
                 downloadTranscript(currentStudent, filename);
                 break;
 
             case 9:
+                system("clear");
                 viewFeesStatus(currentStudent);
                 printf("\t\tTotal Fees: %.2f\n", calculateTotalFees(currentStudent));
                 break;
 
             case 10: {
+                system("clear");
                 int amount;
                 int paymentMode;
                 printf("\t\tTotal fees due: %.2f\n", calculateTotalFees(currentStudent));
@@ -575,6 +585,7 @@ void studentMenu(Student_std* currentStudent) {
             }
 
             case 11:
+                system("clear");
                 changePassword();
                 break;
 
@@ -583,6 +594,7 @@ void studentMenu(Student_std* currentStudent) {
                 return;
 
             default:
+                system("clear");
                 printf("\t\tInvalid choice. Please try again.\n");
         }
     }

@@ -4,7 +4,11 @@
 #include <stdlib.h>
 #include"admin.h"
 #include"student.h"
+#include"Faculty.h"
+#include"Attendence.h"
+#include"course.h"
 
+#define MAX_GRADES 100
 uint16_t choice;
 
 void studentPortal();
@@ -28,13 +32,13 @@ int main(){
         scanf("%hd", &choice);
 
         switch ((MenuChoice)choice) {
-            case c1: studentPortal(); 
+            case c1: system("clear"); studentPortal(); 
             break;
-            case c2: facultyPortal(); 
+            case c2: system("clear"); facultyPortal(); 
             break;
-            case c3: adminPortal(); 
+            case c3: system("clear"); adminPortal(); 
             break;
-            case c0: endProgram();
+            case c0: system("clear"); endProgram();
             default:
             system("clear");
             printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
@@ -46,7 +50,7 @@ int main(){
 
 void studentPortal(){
 
-    system("clear");
+
     while (1) {
         printf("\n\t\t\t<~~ Welcome to Student Portal ~~>\n");
         printf("\t\t1. Create New Account\n");
@@ -58,6 +62,7 @@ void studentPortal(){
 
         switch (choice) {
             case c1: {
+                system("clear"); 
                 createAccount();
 
                 // After account creation, complete the profile
@@ -70,6 +75,7 @@ void studentPortal(){
                 break;
             }
             case c2: {
+                system("clear"); 
                 if (studentLogin()) {
                     // Find the logged-in student
                     char studentID[ID_SIZE];
@@ -96,13 +102,53 @@ void studentPortal(){
 
 void facultyPortal(){
 
-    system("clear");
+    Faculty prof;
+    GradeRecord records[MAX_GRADES];
+    Node_a* attendanceHead = NULL;
+    Course_f* courseHead = NULL;
+    int gradeCount = 0;
+
+    do {
+        printf("\n\t\t\t===== MAIN MENU =====\n");
+        printf("\t\t1. Faculty\n");
+        printf("\t\t2. Grade Records\n");
+        printf("\t\t3. Attendance\n");
+        printf("\t\t4. Course\n");
+        printf("\t\t0. Return\n\n");
+        printf("\t\tEnter choice: ");
+        scanf("%hd", &choice);
+
+        switch (choice) {
+            case 1:
+                system("clear");
+                facultyMenu(&prof);
+                break;
+            case 2:
+                system("clear");
+                gradeMenu(records, &gradeCount);
+                break;
+            case 3:
+                system("clear");
+                attendanceMenu(&attendanceHead);
+                break;
+            case 4:
+                system("clear");
+                courseMenu(&courseHead);
+                break;
+            case 0:
+                system("clear");
+                return;
+            default:
+                system("clear");
+                printf("\t\tInvalid choice. Try again.\n");
+        }
+    } while (choice != 0);
 
 }
 
 void adminPortal(){
 
-    system("clear");
+
     printf("\t\t\t~~> Welcome Back to Admin Portal <~~\n\n");
 
     while (1) {
@@ -118,23 +164,22 @@ void adminPortal(){
         scanf("%hd", &choice);
 
         switch ((MenuChoice)choice) {
-            case c1: modifyUsers(); 
+            case c1: system("clear"); modifyUsers(); 
             break;
-            case c2: addNewmember(); 
+            case c2: system("clear"); addNewmember(); 
             break;
-            case c3: paymentAndinvoice(); 
+            case c3: system("clear"); paymentAndinvoice(); 
             break;
-            case c4: courseAndenroll();
+            case c4: system("clear"); courseAndenroll();
             break;
-            case c5: examAndGrade();
+            case c5: system("clear"); examAndGrade();
             break;
             case c0: 
-            system("clear");
-            return;
+                system("clear");
+                return;
             default:
-            system("clear");
-            printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
-            main();
+                system("clear");
+                printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
             break;
         }
     }

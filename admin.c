@@ -27,22 +27,33 @@ void modifyUsers(){
         scanf("%hd", &choice);
 
         switch ((MenuChoice)choice) {
-            case c1: login(); 
-            break;
-            case c2: adduser(); 
-            break;
-            case c3: deleteuser(); 
-            break;
-            case c4: accessControlSet(); 
-            break;
-            case c5: systemMaintenance(); 
-            break;
+            case c1: 
+                system("clear");
+                login(); 
+                break;
+            case c2: 
+                system("clear");
+                adduser(); 
+                break;
+            case c3: 
+                system("clear");
+                deleteuser(); 
+                break;
+            case c4: 
+                system("clear");
+                accessControlSet(); 
+                break;
+            case c5: 
+                system("clear");
+                systemMaintenance(); 
+                break;
             case c0: 
-            system("clear");
-            return;
-            default: 
-            printf("Invalid number\n"); 
-            break;
+                system("clear");
+                return;
+            default:
+                system("clear"); 
+                printf("Invalid number\n"); 
+                break;
         }
     }
 }
@@ -128,6 +139,7 @@ void addNewmember(){
 
         switch ((MenuChoice)choice) {
             case c1:
+                system("clear");
                 printf("Enter type(1=Student,2=Faculty,3=Staff):");
                 scanf("%d",&type);
                 printf("Enter ID:");
@@ -138,12 +150,14 @@ void addNewmember(){
                 break;
 
             case c2:
+                system("clear");
                 printf("Enter ID to remove:");
                 scanf("%d",&id);
                 removePerson(&head,id);
                 break;
 
             case c3:
+                system("clear");
                 displayList(head);
                 break;
 
@@ -152,6 +166,7 @@ void addNewmember(){
                 return;
 
             default:
+                system("clear");
                 printf("Invalid choice!\n");
         }
     }
@@ -234,21 +249,21 @@ void paymentAndinvoice(){
         scanf("%hd", &choice);
 
         switch ((MenuChoice)choice) {
-            case c1: addStudent(); 
+            case c1: system("clear"); addStudent(); 
             break;
-            case c2: recordPayment(); 
+            case c2: system("clear"); recordPayment(); 
             break;
-            case c3: generateInvoice(); 
+            case c3: system("clear"); generateInvoice(); 
             break;
-            case c4: displayAllStudents(); 
+            case c4: system("clear"); displayAllStudents(); 
             break;
             case c0: 
-            system("clear");
-            return;
+                system("clear");
+                return;
             default: 
-            system("clear");
-            printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
-            break;
+                system("clear");
+                printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
+                break;
         }
     }
 }
@@ -360,16 +375,16 @@ void courseAndenroll(){
         scanf("%hd", &choice);
 
         switch ((MenuChoice)choice) {
-            case c1: AddCourse(); break;
-            case c2: ViewCourses(); break;
-            case c3: EnrollStd(); break;
-            case c4: ViewEnrollments(); break;
-            case c5: DeleteCourse(); break;
-            case c6: DeleteEnrollment(); break;
-            case c7: SearchCourse(); break;
-            case c8: SearchEnrollment(); break;
-            case c0: system("clear"); return;
-            default: printf("Invalid choice!\n");
+            case c1: system("clear"); AddCourse(); break;
+            case c2: system("clear"); ViewCourses(); break;
+            case c3: system("clear"); EnrollStd(); break;
+            case c4: system("clear"); ViewEnrollments(); break;
+            case c5: system("clear"); DeleteCourse(); break;
+            case c6: system("clear"); DeleteEnrollment(); break;
+            case c7: system("clear"); SearchCourse(); break;
+            case c8: system("clear"); SearchEnrollment(); break;
+            case c0: system("clear"); system("clear"); return;
+            default: system("clear"); printf("Invalid choice!\n");
         }
     }
 }
@@ -635,9 +650,9 @@ void examAndGrade(){
         scanf("%hd",&choice);
 
         switch ((MenuChoice)choice) {
-            case c1: examSchedule(); 
+            case c1: system("clear"); examSchedule(); 
             break;
-            case c2: gradeReport(); 
+            case c2: system("clear"); gradeReport(); 
             break;
             case c0: 
             system("clear");
@@ -655,43 +670,49 @@ void examAndGrade(){
 
 // User input for exam schedule
 void examSchedule(){
-    uint16_t i;
-    printf("\t\tOptions for Exam Schedule:\n\n");
-    printf("\t\t\t1. Add a new Exam Schedule\n");
-    printf("\t\t\t2. Edit existing Exam Schedule\n");
-    printf("\t\t\t3. View Any Exam Schedule\n");
-    printf("\t\t\t4. Delete Any Exam Schedule\n");
-    printf("\t\t\t5. Exam Schedule Status\n");
-    printf("\t\t\t6. Exit\n\n");
-    printf("\t\tNow select your preferable option: ");
-    scanf("%hd",&i);
 
-    switch (i){
-        case 1:
-            addExamSchedule();
-            examAndGrade();
-            break;
-        case 2:
-            editExamSchedule();
-            examAndGrade();
-            break;
-        case 3:
-            viewExamSchedule();
-            examAndGrade();
-            break;
-        case 4:
-            deleteExamSchedule();
-            examAndGrade();
-            break;
-        case 5:
-            isPublishedES();
-            examAndGrade();
-            break;;
-        case 6:
-            system("clear");
-            examAndGrade();
-            break;
+    while(1){
+        printf("\t\tOptions for Exam Schedule:\n\n");
+        printf("\t\t\t1. Add a new Exam Schedule\n");
+        printf("\t\t\t2. Edit existing Exam Schedule\n");
+        printf("\t\t\t3. View Any Exam Schedule\n");
+        printf("\t\t\t4. Delete Any Exam Schedule\n");
+        printf("\t\t\t5. Exam Schedule Status\n");
+        printf("\t\t\t0. Return\n\n");
+        printf("\t\tNow select your preferable option: ");
+        scanf("%hd",&choice);
+    
+        switch ((MenuChoice)choice){
+            case c1:
+                system("clear"); 
+                addExamSchedule();
+                break;
+            case c2:
+                system("clear"); 
+                editExamSchedule();
+                break;
+            case c3:
+                system("clear"); 
+                viewExamSchedule();
+                break;
+            case c4:
+                system("clear"); 
+                deleteExamSchedule();
+                break;
+            case c5:
+                system("clear"); 
+                isPublishedES();
+                break;;
+            case c0:
+                system("clear");
+                return;
+            default: 
+                system("clear");
+                printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
+                break;
+        }
     }
+    
 }
 // Add new exam schedule
 void addExamSchedule(){
@@ -747,37 +768,43 @@ struct gradeDetails grades;
 // functions for grade
 // User input for grade
 void gradeReport(){
-    uint16_t j;
-    printf("\t\tOptions Grade Report:\n\n");
-    printf("\t\t\t1. View Grade Report\n");
-    printf("\t\t\t2. Edit Grade Report\n");
-    printf("\t\t\t3. Pubish Grade Report\n");
-    printf("\t\t\t4. Grade Report Status\n");
-    printf("\t\t\t5. Exit\n\n");
-    printf("\t\tNow select your preferable option: ");
-    scanf("%hd",&j);
+    
+    while(1){
+        printf("\t\tOptions Grade Report:\n\n");
+        printf("\t\t\t1. View Grade Report\n");
+        printf("\t\t\t2. Edit Grade Report\n");
+        printf("\t\t\t3. Pubish Grade Report\n");
+        printf("\t\t\t4. Grade Report Status\n");
+        printf("\t\t\t0. Return\n\n");
+        printf("\t\tNow select your preferable option: ");
+        scanf("%hd",&choice);
+    
+        switch ((MenuChoice)choice){
+            case 1:
+                system("clear");
+                viewGrade();
+                break;
+            case 2:
+                system("clear");
+                editGrade();
+                break;
+            case 3:
+                system("clear");
+                publishGrade();
+                break;
+            case 4:
+                system("clear");
+                isPublishGrade();
+                break;
+            case 0:
+                system("clear");
+                return;
+            default: 
+                system("clear");
+                printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
+                break;
 
-    switch (j){
-        case 1:
-            viewGrade();
-            examAndGrade();
-            break;
-        case 2:
-            editGrade();
-            examAndGrade();
-            break;
-        case 3:
-            publishGrade();
-            examAndGrade();
-            break;
-        case 4:
-            isPublishGrade();
-            examAndGrade();
-            break;
-        case 0:
-            system("clear");
-            examAndGrade();
-            break;
+        }
     }
 }
 
