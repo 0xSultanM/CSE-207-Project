@@ -103,4 +103,8 @@ char calculateFinalGrade(float marks);
 bool updateGrade(GradeRecord *gr, float newMarks, const char *newGrade, const char *newRemarks);
 bool isPassingGrade(const GradeRecord *gr);
 
+// Added functions for faculty and grade menu
+void facultyMenu(Faculty *prof);
+void gradeMenu(GradeRecord records[], int *gradeCount);
+
 #endif

@@ -332,3 +332,28 @@ bool isPassingGrade(const GradeRecord *gr) {
     if (!gr || !gr->grade) return false;
     return (gr->grade[0] != 'F' && gr->marks >= 50);
 }
+
+
+
+// Simple stub for faculty menu
+void facultyMenu(Faculty *prof) {
+    printf("\n=== Faculty Menu ===\n");
+    if (prof) {
+        printFaculty(prof);
+    } else {
+        printf("No faculty data available.\n");
+    }
+}
+
+// Simple stub for grade menu
+void gradeMenu(GradeRecord records[], int *gradeCount) {
+    printf("\n=== Grade Menu ===\n");
+    if (*gradeCount == 0) {
+        printf("No grade records available.\n");
+    } else {
+        for (int i = 0; i < *gradeCount; i++) {
+            printGradeRecord(&records[i]);
+            printf("\n");
+        }
+    }
+}
