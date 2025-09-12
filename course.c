@@ -1,3 +1,4 @@
+#include<stdint.h>
 #include "course.h"
 
 // Get semester name

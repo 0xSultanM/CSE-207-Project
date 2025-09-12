@@ -29,11 +29,11 @@ void facultyMenu(Faculty *prof) {
 
         switch (choice) {
             case 1:
-                system("cls");
+                system("clear");
                 printFaculty(prof);
                 break;
             case 2: {
-                system("cls");
+                system("clear");
                 char newEmail[EMAIL_LEN], newContact[CONTACT_LEN];
                 printf("\t\tEnter new email: ");
                 fgets(newEmail, sizeof(newEmail), stdin);
@@ -47,33 +47,33 @@ void facultyMenu(Faculty *prof) {
                 break;
             }
             case 3:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter new office hours: ");
                 fgets(input, sizeof(input), stdin);
                 input[strcspn(input, "\n")] = 0;
                 updateOfficeHours(prof, input);
                 break;
             case 4:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter course ID to add: ");
                 scanf("%d", &courseID);
                 addCourseTaught(prof, courseID);
                 break;
             case 5:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter course ID to remove: ");
                 scanf("%d", &courseID);
                 removeCourseTaught(prof, courseID);
                 break;
             case 6:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter research topic: ");
                 fgets(input, sizeof(input), stdin);
                 input[strcspn(input, "\n")] = 0;
                 addResearchInterest(prof, input);
                 break;
             case 7:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter research topic to remove: ");
                 fgets(input, sizeof(input), stdin);
                 input[strcspn(input, "\n")] = 0;
@@ -104,7 +104,7 @@ void gradeMenu(GradeRecord records[], int *count) {
 
         switch (choice) {
             case 1:
-                system("cls");
+                system("clear");
                 if (*count < MAX_GRADES) {
                     printf("\t\tEnter student ID: ");
                     scanf("%d", &studentID);
@@ -127,32 +127,32 @@ void gradeMenu(GradeRecord records[], int *count) {
                 }
                 break;
             case 2:
-                system("cls");
+                system("clear");
                 for (int i = 0; i < *count; i++) {
                     printGradeRecord(&records[i]);
                 }
                 break;
             case 3:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter student ID: ");
                 scanf("%d", &studentID);
                 displayGradeRecordsByStudent(records, *count, studentID);
                 break;
             case 4:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter course ID: ");
                 scanf("%d", &courseID);
                 displayGradeRecordsByCourse(records, *count, courseID);
                 break;
             case 5:
-                system("cls");
+                system("clear");
                 printf("\t\tEnter student ID: ");
                 scanf("%d", &studentID);
                 float avg = calculateAverageMarks(records, *count, studentID);
                 printf("\t\tAverage Marks: %.2f | Final Grade: %c\n", avg, calculateFinalGrade(avg));
                 break;
             case 6: {
-                system("cls");
+                system("clear");
                 printf("\t\tEnter record index (0 to %d): ", *count - 1);
                 int idx;
                 scanf("%d", &idx);
@@ -168,7 +168,7 @@ void gradeMenu(GradeRecord records[], int *count) {
                     remarks[strcspn(remarks, "\n")] = 0;
                     updateGrade(&records[idx], marks, grade, remarks);
                 } else {
-                    system("cls");
+                    system("clear");
                     printf("\t\tInvalid index!\n");
                 }
                 break;
