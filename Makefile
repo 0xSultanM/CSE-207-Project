@@ -11,4 +11,4 @@ portal: $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	del /Q *.o *.txt portal
+	del /Q *.o *.txt *.exe portal
