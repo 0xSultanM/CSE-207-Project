@@ -666,9 +666,14 @@ void examAndGrade(){
 // Functions for Exam Schedule
 
 // User input for exam schedule
+FILE *examFile;
+
 void examSchedule(){
 
+    examFile = fopen("exam.txt","w");
+
     while(1){
+
         printf("\t\tOptions for Exam Schedule:\n\n");
         printf("\t\t\t1. Add a new Exam Schedule\n");
         printf("\t\t\t2. Edit existing Exam Schedule\n");
@@ -711,41 +716,77 @@ void examSchedule(){
     }
     
 }
+
+
 // Add new exam schedule
 void addExamSchedule(){
-    system("cls");
-    printf("\t\t\nSchedule the upcoming exams");
+
+    examFile = fopen("exam.txt","a+");
+
+    printf("\n\n\t\tSchedule the upcoming exams");
     printf("\n\n\t\tWrite the course code to add: ");
     scanf("%s",examS.courseCode);
+    fprintf(examFile, examS.courseCode);
+    fprintf(examFile," | ");
     printf("\t\tType the Date ( Format: DD/MM/YEAR ): ");
     scanf("%s",examS.date);
+    fprintf(examFile, examS.date);
+    fprintf(examFile," | ");
     printf("\t\tType the Time ( Format: 10:00 AM ): ");
     scanf("%s",examS.time);
+    fprintf(examFile, examS.time);
+    fprintf(examFile,"\n");
+    fclose(examFile);
     system("cls");
     printf("\n\n\t\tExam for %s has been scheduled successfully!!\n\n",examS.courseCode);
+
+    memset(&examS,0,sizeof(struct examSchedule));
+
 }
 
 // Edit or Modify the Exam Schedule
-void editExamSchedule(){
-    system("cls");
-    printf("\n\t\tEdit or Modify the scheduled exams");
-    char c[12];
-    printf("\n\n\t\t\tWrite the course code to edit: ");
-    scanf("%s",c);
-    
-    if(strcmp(c, examS.courseCode) == 0){
-        printf("\n\n\t\tType the New Date ( Format: DD/MM/YEAR ): ");
-        scanf("%s",examS.date);
-        printf("\t\tType the New Time ( Format: 10:00 AM ): ");
-        scanf("%s",examS.time);
-        printf("\n\n\t\tExam time has been edited for %s sucessfully\n\n",examS.courseCode);
+void editExamSchedule(){  
+
+    if((examFile = fopen("exam.txt","a+")) == NULL){
+        printf("\n\n\t\tNo exam is scheduled to be modified!");
     } else {
-        printf("\n\n\t\tThere isn't any scheduled exam for %s course\n\n",examS.courseCode);
+        printf("\n\t\tEdit or Modify the scheduled exams");
+        char c[12];
+        printf("\n\n\t\t\tWrite the course code to edit: ");
+        scanf("%s",c);
+        
+        if(strcmp(c, examS.courseCode) == 0){
+            printf("\n\n\t\tType the New Date ( Format: DD/MM/YEAR ): ");
+            scanf("%s",examS.date);
+            printf("\t\tType the New Time ( Format: 10:00 AM ): ");
+            scanf("%s",examS.time);
+
+            system("cls");
+            printf("\n\n\t\tExam time has been edited for %s sucessfully\n\n",examS.courseCode);
+        } else {
+            system("cls");
+            printf("\n\n\t\tThere isn't any scheduled exam for %s course\n\n",examS.courseCode);
+        }
     }
+    
+    fclose(examFile);
+    
 }
 
 // View Any Schdeduled Exams
 void viewExamSchedule(){
+
+    memset(&examS,0,sizeof(struct examSchedule));
+
+    if((examFile = fopen("exam.txt","a+")) == NULL){
+        printf("\n\n\t\tNo exam is scheduled for now!");
+    } else {
+        fread(&examS,sizeof(struct examSchedule),1,examFile);
+        printf("\n\n\t\t Course Code\t|\tExam Date\t|\tExam Time\n\n");
+        printf("\t\t%s %s %s\n",examS.courseCode, examS.date,examS.time);
+    }
+
+    fclose(examFile);
 
 }
 
