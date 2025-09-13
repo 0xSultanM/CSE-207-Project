@@ -16,6 +16,8 @@ typedef enum {
     
 } MenuChoice;
 
+extern uint16_t choice;
+
 /* | Following code is developed by
    |  Name: Mahmudur Rahaman Pial
    |  ID: 2024-1-60-177
@@ -31,7 +33,6 @@ typedef struct User {
     char role[ROLE_LEN];
     struct User *next;
 } User;
-
 
 void modifyUsers();
 void login();

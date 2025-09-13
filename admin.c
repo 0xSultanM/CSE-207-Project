@@ -4,9 +4,6 @@
 #include <stdlib.h>
 #include"admin.h"
 
-
-uint16_t choice;
-
 /* | Following code is developed by
    |  Name: Mahmudur Rahaman Pial
    |  ID: 2024-1-60-177
@@ -21,7 +18,8 @@ void modifyUsers(){
         printf("\t\t3. Delete User\n");
         printf("\t\t4. AccessControlSet\n");
         printf("\t\t5. SystemMaintenance\n");
-        printf("\t\t0. Return\n");
+        printf("\t\t6. Return\n");
+        printf("\t\t0. Exit\n");
 
         printf("Enter choice: ");
         scanf("%hd", &choice);
@@ -47,9 +45,14 @@ void modifyUsers(){
                 system("clear");
                 systemMaintenance(); 
                 break;
-            case c0: 
+            case c6:
                 system("clear");
                 return;
+            case c0: 
+                system("clear");
+                printf("\n\n\t\t\tHave a great day ahead...");
+                printf("\n\n\n");
+                exit(0);
             default:
                 system("clear"); 
                 printf("Invalid number\n"); 
@@ -133,7 +136,8 @@ void addNewmember(){
         printf("\t\t1.Add Person\n");
         printf("\t\t2.Remove Person\n");
         printf("\t\t3.Display List\n");
-        printf("\t\t4.Return\n\n");
+        printf("\t\t4.Return\n");
+        printf("\t\t0. Exit\n\n");
         printf("\t\t\tEnter choice: ");
         scanf("%hd",&choice);
 
@@ -161,10 +165,15 @@ void addNewmember(){
                 displayList(head);
                 break;
 
-            case c0:
+            case c4:
                 system("clear");
                 return;
 
+            case c0: 
+                system("clear");
+                printf("\n\n\t\t\tHave a great day ahead...");
+                printf("\n\n\n");
+                exit(0);
             default:
                 system("clear");
                 printf("Invalid choice!\n");
@@ -243,7 +252,8 @@ void paymentAndinvoice(){
         printf("\t\t2. Deposit Payment\n");
         printf("\t\t3. Generate Invoice\n");
         printf("\t\t4. Display All Students\n");
-        printf("\t\t0. Return\n\n");
+        printf("\t\t5. Return\n");
+        printf("\t\t0. Exit\n\n");
 
         printf("\t\t\tEnter your choice: ");
         scanf("%hd", &choice);
@@ -257,9 +267,14 @@ void paymentAndinvoice(){
             break;
             case c4: system("clear"); displayAllStudents(); 
             break;
-            case c0: 
+            case c5: 
                 system("clear");
                 return;
+            case c0: 
+                system("clear");
+                printf("\n\n\t\t\tHave a great day ahead...");
+                printf("\n\n\n");
+                exit(0);
             default: 
                 system("clear");
                 printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
@@ -361,17 +376,18 @@ void courseAndenroll(){
 
     // menu loop using for with condition
     for (choice = -1; choice != 0; ) {
-        printf("\n--- ADMIN PANEL: COURSE & ENROLLMENT MANAGEMENT ---\n");
-        printf("1. Add Course & Assign Faculty\n");
-        printf("2. View Courses\n");
-        printf("3. Enroll Student\n");
-        printf("4. View Enrollments\n");
-        printf("5. Delete Course\n");
-        printf("6. Delete Enrollment\n");
-        printf("7. Search Course\n");
-        printf("8. Search Enrollment\n");
-        printf("0. Return\n");
-        printf("Enter choice: ");
+        printf("\n\n\t\t\t--- ADMIN PANEL: COURSE & ENROLLMENT MANAGEMENT ---\n\n");
+        printf("\t\t\t1. Add Course & Assign Faculty\n");
+        printf("\t\t\t2. View Courses\n");
+        printf("\t\t\t3. Enroll Student\n");
+        printf("\t\t\t4. View Enrollments\n");
+        printf("\t\t\t5. Delete Course\n");
+        printf("\t\t\t6. Delete Enrollment\n");
+        printf("\t\t\t7. Search Course\n");
+        printf("\t\t\t8. Search Enrollment\n");
+        printf("\t\t\t9. Return\n");
+        printf("\t\t\t0. Exit\n\n");
+        printf("\t\t\tEnter choice: ");
         scanf("%hd", &choice);
 
         switch ((MenuChoice)choice) {
@@ -383,7 +399,8 @@ void courseAndenroll(){
             case c6: system("clear"); DeleteEnrollment(); break;
             case c7: system("clear"); SearchCourse(); break;
             case c8: system("clear"); SearchEnrollment(); break;
-            case c0: system("clear"); system("clear"); return;
+            case c9: system("clear"); return;
+            case c0: system("clear"); printf("\n\n\t\t\tHave a great day ahead..."); printf("\n\n\n"); exit(0);
             default: system("clear"); printf("Invalid choice!\n");
         }
     }
@@ -644,7 +661,8 @@ void examAndGrade(){
         printf("\t\tAvailable Options:\n\n");
         printf("\t\t\t1. Exam Schedule\n");
         printf("\t\t\t2. Grade Report\n");
-        printf("\t\t\t0. Return\n\n");
+        printf("\t\t\t3. Return\n");
+        printf("\t\t\t0. Exit\n\n");
 
         printf("\t\tSelect your proferable option: ");
         scanf("%hd",&choice);
@@ -654,9 +672,9 @@ void examAndGrade(){
             break;
             case c2: system("clear"); gradeReport(); 
             break;
-            case c0: 
-            system("clear");
-            return;
+            case c3: system("clear"); return;
+            case c0: system("clear"); printf("\n\n\t\t\tHave a great day ahead..."); printf("\n\n\n");
+            exit(0);
             default: 
             system("clear");
             printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
@@ -669,16 +687,22 @@ void examAndGrade(){
 // Functions for Exam Schedule
 
 // User input for exam schedule
+FILE *examFile;
+
 void examSchedule(){
 
+    examFile = fopen("exam.txt","w");
+
     while(1){
+
         printf("\t\tOptions for Exam Schedule:\n\n");
         printf("\t\t\t1. Add a new Exam Schedule\n");
         printf("\t\t\t2. Edit existing Exam Schedule\n");
         printf("\t\t\t3. View Any Exam Schedule\n");
         printf("\t\t\t4. Delete Any Exam Schedule\n");
         printf("\t\t\t5. Exam Schedule Status\n");
-        printf("\t\t\t0. Return\n\n");
+        printf("\t\t\t6. Return\n");
+        printf("\t\t\t0. Exit\n\n");
         printf("\t\tNow select your preferable option: ");
         scanf("%hd",&choice);
     
@@ -703,9 +727,14 @@ void examSchedule(){
                 system("clear"); 
                 isPublishedES();
                 break;;
-            case c0:
+            case c6:
                 system("clear");
                 return;
+            case c0: 
+                system("clear");
+                printf("\n\n\t\t\tHave a great day ahead...");
+                printf("\n\n\n");
+                exit(0);
             default: 
                 system("clear");
                 printf("\n\n\t\t\tNot a valid choice. Kindly select again!\n\n");
@@ -714,41 +743,77 @@ void examSchedule(){
     }
     
 }
+
+
 // Add new exam schedule
 void addExamSchedule(){
-    system("clear");
-    printf("\t\t\nSchedule the upcoming exams");
+
+    examFile = fopen("exam.txt","a+");
+
+    printf("\n\n\t\tSchedule the upcoming exams");
     printf("\n\n\t\tWrite the course code to add: ");
     scanf("%s",examS.courseCode);
+    fprintf(examFile, "%s",examS.courseCode);
+    fprintf(examFile," | ");
     printf("\t\tType the Date ( Format: DD/MM/YEAR ): ");
     scanf("%s",examS.date);
+    fprintf(examFile, "%s",examS.date);
+    fprintf(examFile," | ");
     printf("\t\tType the Time ( Format: 10:00 AM ): ");
     scanf("%s",examS.time);
+    fprintf(examFile,"%s", examS.time);
+    fprintf(examFile,"\n");
+    fclose(examFile);
     system("clear");
     printf("\n\n\t\tExam for %s has been scheduled successfully!!\n\n",examS.courseCode);
+
+    memset(&examS,0,sizeof(struct examSchedule));
+
 }
 
 // Edit or Modify the Exam Schedule
-void editExamSchedule(){
-    system("clear");
-    printf("\n\t\tEdit or Modify the scheduled exams");
-    char c[12];
-    printf("\n\n\t\t\tWrite the course code to edit: ");
-    scanf("%s",c);
-    
-    if(strcmp(c, examS.courseCode) == 0){
-        printf("\n\n\t\tType the New Date ( Format: DD/MM/YEAR ): ");
-        scanf("%s",examS.date);
-        printf("\t\tType the New Time ( Format: 10:00 AM ): ");
-        scanf("%s",examS.time);
-        printf("\n\n\t\tExam time has been edited for %s sucessfully\n\n",examS.courseCode);
+void editExamSchedule(){  
+
+    if((examFile = fopen("exam.txt","a+")) == NULL){
+        printf("\n\n\t\tNo exam is scheduled to be modified!");
     } else {
-        printf("\n\n\t\tThere isn't any scheduled exam for %s course\n\n",examS.courseCode);
+        printf("\n\t\tEdit or Modify the scheduled exams");
+        char c[12];
+        printf("\n\n\t\t\tWrite the course code to edit: ");
+        scanf("%s",c);
+        
+        if(strcmp(c, examS.courseCode) == 0){
+            printf("\n\n\t\tType the New Date ( Format: DD/MM/YEAR ): ");
+            scanf("%s",examS.date);
+            printf("\t\tType the New Time ( Format: 10:00 AM ): ");
+            scanf("%s",examS.time);
+
+            system("clear");
+            printf("\n\n\t\tExam time has been edited for %s sucessfully\n\n",examS.courseCode);
+        } else {
+            system("clear");
+            printf("\n\n\t\tThere isn't any scheduled exam for %s course\n\n",examS.courseCode);
+        }
     }
+    
+    fclose(examFile);
+    
 }
 
 // View Any Schdeduled Exams
 void viewExamSchedule(){
+
+    memset(&examS,0,sizeof(struct examSchedule));
+
+    if((examFile = fopen("exam.txt","a+")) != NULL){
+        fread(&examS,sizeof(struct examSchedule),1,examFile);
+        printf("\n\n\t\t Course Code\t|\tExam Date\t|\tExam Time\n\n");
+        printf("\t\t%s %s %s\n",examS.courseCode, examS.date,examS.time);
+    } else {
+        printf("\n\n\t\tNo exam is scheduled for now!");
+    }
+
+    fclose(examFile);
 
 }
 
@@ -775,7 +840,8 @@ void gradeReport(){
         printf("\t\t\t2. Edit Grade Report\n");
         printf("\t\t\t3. Pubish Grade Report\n");
         printf("\t\t\t4. Grade Report Status\n");
-        printf("\t\t\t0. Return\n\n");
+        printf("\t\t\t5. Return\n");
+        printf("\t\t\t0. Exit");
         printf("\t\tNow select your preferable option: ");
         scanf("%hd",&choice);
     

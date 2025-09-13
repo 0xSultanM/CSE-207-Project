@@ -11,4 +11,4 @@ portal: $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o portal
+	rm -f *.o *.txt portal
